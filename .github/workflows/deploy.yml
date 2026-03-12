@@ -27,11 +27,11 @@ jobs:
             - name: Tag Docker image
               run: |
                 docker tag ${{secrets.ECR_REPOSITORY }}:latest \
-                ${{secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{secrets.AWS_REGION }}.amazonaws.com/$((secrets.ECR_REPOSITORY)):latest
+                ${{secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{secrets.AWS_REGION }}.amazonaws.com/${{secrets.ECR_REPOSITORY }}:latest
 
             - name: push docker image to ecr
               run: |
-                docker push ${{secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{secrets.AWS_REGION }}.amazonaws.com/$((secrets.ECR_REPOSITORY)):latest
+                docker push ${{secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{secrets.AWS_REGION }}.amazonaws.com/${{secrets.ECR_REPOSITORY }}:latest
 
             - name: update ecs service
               run: | 
